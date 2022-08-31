@@ -18,6 +18,7 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const ESLintPlugin = require('eslint-webpack-plugin');
 const paths = require('./paths');
 const modules = require('./modules');
+const modifyVars = require('../theme/config.json');
 const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin =
@@ -71,6 +72,7 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+const lessRegex = /\.less$/;
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -542,6 +544,23 @@ module.exports = function (webpackEnv) {
                 },
                 'sass-loader'
               ),
+            },
+            {
+              test: lessRegex,
+              use: [
+                "style-loader",
+                "css-loader",
+                "postcss-loader",
+                {
+                  loader: "less-loader",
+                  options: {
+                    lessOptions: {
+                      javascriptEnabled: true,
+                      modifyVars
+                    }
+                  }
+                }
+              ]
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.

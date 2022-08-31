@@ -1,28 +1,19 @@
-import logo from './logo.svg';
-import { Button } from 'antd';
-import 'antd/dist/antd.css'
-import './App.css';
+import 'antd/lib/style/themes/default.less';
+import 'antd/dist/antd.less';
+import './style.less';
+import QuestionnaireInfo from './Components/QuestionnaireInfo'
+import { Divider, Typography } from 'antd';
+import { Container } from './styles';
 
-function App() {
+const { Title, Paragraph, Text, Link } = Typography;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Button type='dashed'>antd button</Button>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Title>編輯滿意度問卷</Title>
+      <QuestionnaireInfo />
+    </Container>
   );
-}
+};
 
 export default App;

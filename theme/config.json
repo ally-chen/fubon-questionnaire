@@ -1,0 +1,14 @@
+{
+  "@primary-color": "#23C4A8",
+  "@border-radius-base": "4px",
+  "@disabled-color": "#BFBFBF",
+  "@border-color-base": "#D2D2D2",
+  "@font-size-base": "16px",
+  "@font-family": "-apple-system, Noto Sans TC, Roboto, Helvetica Neue, Arial",
+  "@heading-1-size": "ceil(@font-size-base * 1.875)",
+  "@heading-2-size": "ceil(@font-size-base * 1.67)",
+  "@heading-3-size": "ceil(@font-size-base * 1.33)",
+  "@heading-4-size": "ceil(@font-size-base * 1.25)",
+  "@heading-5-size": "ceil(@font-size-base * 1)",
+  "@line-height-base": 1.5
+}

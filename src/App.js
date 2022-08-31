@@ -1,4 +1,6 @@
 import logo from './logo.svg';
+import { Button } from 'antd';
+import 'antd/dist/antd.css'
 import './App.css';
 
 function App() {
@@ -6,6 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <Button type='dashed'>antd button</Button>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

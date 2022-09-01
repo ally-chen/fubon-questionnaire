@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-button_MCQ">
+      <rect width="20" height="20"/>
+    </clipPath>
+  </defs>
+  <g id="button_MCQ" clip-path="url(#clip-button_MCQ)">
+    <g id="Group_17941" data-name="Group 17941" transform="translate(-2 -2)">
+      <path id="Path_12527" data-name="Path 12527" d="M0,0H24V24H0Z" fill="none"/>
+      <rect id="Rectangle_6803" data-name="Rectangle 6803" width="16" height="16" rx="2" transform="translate(4 4)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_12528" data-name="Path 12528" d="M9,12l2,2,4-4" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

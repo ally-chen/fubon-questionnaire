@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-button_note">
+      <rect width="20" height="20"/>
+    </clipPath>
+  </defs>
+  <g id="button_note" clip-path="url(#clip-button_note)">
+    <g id="Group_18061" data-name="Group 18061" transform="translate(-2 -2)">
+      <path id="Path_12499" data-name="Path 12499" d="M0,0H24V24H0Z" fill="none"/>
+      <path id="Path_12500" data-name="Path 12500" d="M16,6h3a1,1,0,0,1,1,1V18a2,2,0,0,1-4,0V5a1,1,0,0,0-1-1H5A1,1,0,0,0,4,5V17a3,3,0,0,0,3,3H18" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <line id="Line_467" data-name="Line 467" x2="4" transform="translate(8 8)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <line id="Line_468" data-name="Line 468" x2="4" transform="translate(8 12)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <line id="Line_469" data-name="Line 469" x2="4" transform="translate(8 16)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

@@ -1,44 +1,107 @@
-import { Board, RequiredLabel } from '../styles';
-import { Typography, Upload } from 'antd';
-import { InboxOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import { Board, RequiredLabel, BannerPreview, VerticalSpace } from "../styles";
+import { Typography, Upload, Input, Space } from "antd";
+import { InboxOutlined, CloseOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import { Controller } from "react-hook-form";
 
 const { Dragger } = Upload;
 const { Title } = Typography;
+const { TextArea } = Input;
 
-const QuestionnaireInfo = () => {
-  const [banner, setBanner] = useState(null);
-  const loadImage = (e) => {
-    // console.log(e.dataTransfer.files);
+const QuestionnaireInfo = ({ control }) => {
+  const [banner, setBanner] = useState([]);
+  const onUploadChange = (info, formChange) => {
+    if (info.file.status === "removed") {
+      setBanner([]);
+      formChange([]);
+    } else {
+      const imgUrl = URL.createObjectURL(info.file);
+      const fileInfo = {
+        url: imgUrl,
+        thumbUrl: imgUrl,
+        status: "Done",
+        name: info.file.name,
+        uid: info.file.uid,
+      };
+      setBanner([fileInfo]);
+      formChange([fileInfo]);
+    }
   };
-  const onUploadChange = (info) => {
-    // console.log(info.file);
+  const customRender = (originNode, file, currFileList) => {
+    return (
+      <div>
+        <BannerPreview
+          style={{ backgroundImage: `url(${file.thumbUrl})` }}
+          title={file.name}
+        />
+        {originNode}
+      </div>
+    );
   };
   return (
-    <Board style={{padding: '30px 90px'}}>
-      <Title level={5}>滿意度問卷Banner</Title>
-      <Dragger
-        name='banner'
-        onDrop={loadImage}
-        onChange={onUploadChange}
-        showUploadList={{
-          showPreviewIcon: true
-        }}
-        beforeUpload={() => false}
-        maxCount={1}
-      >
-        <p className="ant-upload-drag-icon">
-          <InboxOutlined style={{color: '#4CAAF5', fontSize: 48}} />
-        </p>
-        <p className="ant-upload-text">選擇欲上傳資料：點擊或將文件拖曳到這裡上傳</p>
-        <p className="ant-upload-hint">
-          最佳尺寸建議：寬1088＊高110，每張大小限制不超過3MB，限上傳 jpg、png、gif 格式。
-        </p>
-      </Dragger>
-      <Title level={5}>問卷文案<RequiredLabel>*</RequiredLabel></Title>
-      <Title level={5}>個資聲明文案<RequiredLabel>*</RequiredLabel></Title>
+    <Board style={{ padding: "30px 90px" }}>
+      <VerticalSpace direction="vertical" size="middle">
+        <div>
+          <Title level={5}>滿意度問卷Banner</Title>
+          <Controller
+            control={control}
+            name="banner"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Dragger
+                name="banner"
+                onChange={(e) => {
+                  onUploadChange(e, onChange);
+                }}
+                onBlur={onBlur}
+                fileList={value}
+                itemRender={customRender}
+                showUploadList={{
+                  removeIcon: <CloseOutlined style={{ fontSize: 12 }} />,
+                }}
+                beforeUpload={() => false}
+                maxCount={1}
+              >
+                <p className="ant-upload-drag-icon">
+                  <InboxOutlined style={{ color: "#4CAAF5", fontSize: 48 }} />
+                </p>
+                <p className="ant-upload-text">
+                  選擇欲上傳資料：點擊或將文件拖曳到這裡上傳
+                </p>
+                <p className="ant-upload-hint">
+                  最佳尺寸建議：寬1088＊高110，每張大小限制不超過3MB，限上傳
+                  jpg、png、gif 格式。
+                </p>
+              </Dragger>
+            )}
+          />
+        </div>
+        <div>
+          <Title level={5}>
+            問卷文案<RequiredLabel>*</RequiredLabel>
+          </Title>
+          <Controller
+            control={control}
+            name="caption"
+            render={({ field: { onChange, onBlur } }) => (
+              <TextArea rows={7} onChange={onChange} onBlur={onBlur} />
+            )}
+          />
+        </div>
+        <div>
+          <Title level={5}>
+            個資聲明文案<RequiredLabel>*</RequiredLabel>
+          </Title>
+          <Controller
+            control={control}
+            name="terms"
+            render={({ field: { onChange, onBlur } }) => (
+              <TextArea rows={7} onChange={onChange} onBlur={onBlur} />
+            )}
+          />
+        </div>
+      </VerticalSpace>
     </Board>
-  )
+  );
 };
 
 export default QuestionnaireInfo;

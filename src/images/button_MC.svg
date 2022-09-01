@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-button_MC">
+      <rect width="20" height="20"/>
+    </clipPath>
+  </defs>
+  <g id="button_MC" clip-path="url(#clip-button_MC)">
+    <g id="Group_17948" data-name="Group 17948" transform="translate(-2 -2)">
+      <path id="Path_12549" data-name="Path 12549" d="M0,0H24V24H0Z" fill="none"/>
+      <circle id="Ellipse_122" data-name="Ellipse 122" cx="9" cy="9" r="9" transform="translate(3 3)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <g id="Ellipse_123" data-name="Ellipse 123" transform="translate(8 8)" fill="rgba(0,0,0,0)" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <circle cx="4" cy="4" r="4" stroke="none"/>
+        <circle cx="4" cy="4" r="3" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

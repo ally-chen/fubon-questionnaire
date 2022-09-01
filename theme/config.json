@@ -1,5 +1,9 @@
 {
   "@primary-color": "#23C4A8",
+  "@link-color": "#1797FB",
+  "@checkbox-color":"#1890FF",
+  "@item-hover-bg": "#F5F8FC",
+  "@layout-body-background": "#fff",
   "@border-radius-base": "4px",
   "@disabled-color": "#BFBFBF",
   "@border-color-base": "#D2D2D2",
@@ -10,5 +14,8 @@
   "@heading-3-size": "ceil(@font-size-base * 1.33)",
   "@heading-4-size": "ceil(@font-size-base * 1.25)",
   "@heading-5-size": "ceil(@font-size-base * 1)",
-  "@line-height-base": 1.5
+  "@line-height-base": 1.5,
+  "@padding-lg": "30px",
+  "@padding-md": "20px",
+  "@padding-sm": "10px"
 }

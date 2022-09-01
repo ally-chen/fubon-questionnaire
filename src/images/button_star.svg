@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-button_star">
+      <rect width="20" height="20"/>
+    </clipPath>
+  </defs>
+  <g id="button_star" clip-path="url(#clip-button_star)">
+    <g id="Group_17947" data-name="Group 17947" transform="translate(-1 -1)">
+      <path id="Path_12547" data-name="Path 12547" d="M0,0H22V22H0Z" fill="none"/>
+      <path id="Path_12548" data-name="Path 12548" d="M11,16.092l-5.554,2.9,1.061-6.149-4.5-4.354L8.216,7.6,10.993,2,13.77,7.6l6.209.895-4.5,4.354,1.061,6.149Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

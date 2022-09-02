@@ -1,10 +1,5 @@
 import { useFieldArray, Controller } from "react-hook-form";
 import {
-  Layout,
-  Typography,
-  Affix,
-  Switch,
-  List,
   Checkbox,
   Button,
   Col,
@@ -14,11 +9,11 @@ import {
 import { VerticalSpace } from "../styles";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 
-const MultipleOptions = ({ control, index }) => {
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
+const MultipleOptions = ({ control, index, hasInputCheck, childrenKey = 'children' }) => {
+  const { fields, remove, insert } = useFieldArray(
     {
       control, // control props comes from useForm (optional: if you are using FormContext)
-      name: `questionConfigs.${index}.children`, // unique name for your Field Array
+      name: `questionConfigs.${index}.${childrenKey}`, // unique name for your Field Array
     }
   );
   const alphaList = "abcdefghijklmnopqrstuvwxyz".split("");
@@ -28,25 +23,27 @@ const MultipleOptions = ({ control, index }) => {
         {fields.map((item, cIndex) => (
           <div key={item.id}>
             <Row align="middle" gutter={4}>
-              <Col flex="18px">{alphaList[cIndex]}</Col>
+              <Col flex="18px">{childrenKey === 'children2' ? cIndex + 1 : alphaList[cIndex]}</Col>
               <Col flex="auto">
                 <Controller
-                  name={`questionConfigs.${index}.children.${cIndex}.label`}
+                  name={`questionConfigs.${index}.${childrenKey}.${cIndex}.label`}
                   control={control}
                   render={({ field }) => <Input {...field} />}
                 />
               </Col>
-              <Col flex="86px">
-                <Controller
-                  name={`questionConfigs.${index}.children.${cIndex}.includeInput`}
-                  control={control}
-                  render={({ field }) => (
-                    <Checkbox {...field} checked={field.value}>
-                      含簡述
-                    </Checkbox>
-                  )}
-                />
-              </Col>
+              {hasInputCheck && (
+                <Col flex="86px">
+                  <Controller
+                    name={`questionConfigs.${index}.${childrenKey}.${cIndex}.includeInput`}
+                    control={control}
+                    render={({ field }) => (
+                      <Checkbox {...field} checked={field.value}>
+                        含簡述
+                      </Checkbox>
+                    )}
+                  />
+                </Col>
+              )}
               <Col flex="32px">
                 <Button
                   type="text"

@@ -4,7 +4,7 @@ import { Button, Input, Switch, Space } from "antd";
 export const Container = styled.div`
   max-width: 1128px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 30px 20px;
 `;
 
 export const VerticalSpace = styled(Space)`
@@ -14,6 +14,18 @@ export const VerticalSpace = styled(Space)`
 export const Board = styled.div`
   background: #f5f8fc;
   border-radius: 10px;
+  .modalPreview &{
+    padding: 30px 50px;
+    @media (max-width: 767px) {
+      padding: 20px;
+    }
+  }
+  &.infoBoard {
+    padding: 30px 90px;
+    @media (max-width: 767px) {
+      padding: 20px;
+    }
+  }
 `;
 
 export const RequiredLabel = styled.span`
@@ -26,6 +38,9 @@ export const BannerPreview = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 10px;
+  .formIntro &{
+    margin-top: 0;
+  }
   &:before {
     content: "";
     padding-bottom: 11%;
@@ -134,4 +149,13 @@ cursor: pointer;
     font-size: 18px;
   }
 }
+`;
+
+export const InnerInput = styled(Input)`
+padding: 2px 0;
+border: 0;
+border-bottom: 1px solid #d2d2d2;
+margin-left: 20px;
+width: calc(100% - 30px);
+border-radius: 0;
 `;

@@ -1,16 +1,20 @@
 import { useForm } from "react-hook-form";
 import QuestionnaireInfo from "./Components/QuestionnaireInfo";
 import QuestionnaireList from "./Components/QuestionnaireList";
-import { Space, Typography } from "antd";
+import PreviewModal from "./Components/PreviewModal";
+import { Row, Col, Typography, Button } from "antd";
 import { Container, VerticalSpace } from "./styles";
 import "antd/lib/style/themes/default.less";
 import "antd/dist/antd.less";
 import "./style.less";
+import { useEffect, useState } from "react";
 
 const { Title } = Typography;
 
 const App = () => {
-  const { handleSubmit, reset, watch, control, register } = useForm({
+  const [modalVisible, setModalVisible] = useState(false);
+  const [configs, setConfigs] = useState([]);
+  const { watch, control, getValues } = useForm({
     defaultValues: {
       questionConfigs: [
         {
@@ -67,18 +71,76 @@ const App = () => {
           enabled: true,
           required: true,
         },
+        {
+          type: "matrix",
+          label: '您對今日講座滿意度',
+          children: [
+            {
+              label: '對於主講者整體表現的滿意程度，您覺得'
+            },
+            {
+              label: '對於議題內容深淺程度及適用性，您覺得'
+            }
+          ],
+          children2: [
+            {
+              label: '非常滿意'
+            },
+            {
+              label: '滿意'
+            },
+            {
+              label: '普通'
+            },
+            {
+              label: '不滿意'
+            },
+            {
+              label: '非常不滿意'
+            },
+          ],
+          enabled: true,
+          required: true,
+        },
       ],
     },
   });
-  const formWatch = watch();
-  console.log(formWatch);
+  const onPreviewClick = () => {
+    setModalVisible(true);
+    const formData = getValues();
+    console.log('form', formData);
+    setConfigs(formData);
+  };
+  const onModalClose = () => {
+    setModalVisible(false);
+  };
+
+  useEffect(() => {
+    if (!modalVisible) {
+      setConfigs([])
+    }
+  }, [modalVisible]);
+
   return (
     <Container>
       <Title>編輯滿意度問卷</Title>
       <VerticalSpace direction="vertical" size="middle">
         <QuestionnaireInfo control={control} />
         <QuestionnaireList control={control} />
+        <Row className="actions" justify='space-between' gutter={10}>
+          <Col flex={1}><Button type="primary" shape="round" ghost>暫存</Button></Col>
+          <Col flex={1}>
+            <Row gutter={10}>
+              <Col flex={1}><Button type="primary" shape="round" ghost className="btnFull">取消</Button></Col>
+              <Col flex={1}><Button type="primary" shape="round" className="btnFull">確定</Button></Col>
+            </Row>
+          </Col>
+          <Col flex={1} style={{ textAlign: 'right' }}>
+            <Button type="primary" shape="round" ghost onClick={onPreviewClick}>預覽</Button>
+          </Col>
+        </Row>
       </VerticalSpace>
+      <PreviewModal onModalClose={onModalClose} visible={modalVisible} configs={configs} />
     </Container>
   );
 };

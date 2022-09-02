@@ -1,18 +1,25 @@
 import { Board, RequiredLabel, BannerPreview, VerticalSpace } from "../styles";
-import { Typography, Upload, Input, Space } from "antd";
+import { Typography, Upload, Input } from "antd";
 import { InboxOutlined, CloseOutlined } from "@ant-design/icons";
-import { useState } from "react";
 import { Controller } from "react-hook-form";
 
 const { Dragger } = Upload;
 const { Title } = Typography;
 const { TextArea } = Input;
 
+const customItemRender = (originNode, file) => (
+  <div>
+    <BannerPreview
+      style={{ backgroundImage: `url(${file.thumbUrl})` }}
+      title={file.name}
+    />
+    {originNode}
+  </div>
+);
+
 const QuestionnaireInfo = ({ control }) => {
-  const [banner, setBanner] = useState([]);
   const onUploadChange = (info, formChange) => {
     if (info.file.status === "removed") {
-      setBanner([]);
       formChange([]);
     } else {
       const imgUrl = URL.createObjectURL(info.file);
@@ -23,23 +30,11 @@ const QuestionnaireInfo = ({ control }) => {
         name: info.file.name,
         uid: info.file.uid,
       };
-      setBanner([fileInfo]);
       formChange([fileInfo]);
     }
   };
-  const customRender = (originNode, file, currFileList) => {
-    return (
-      <div>
-        <BannerPreview
-          style={{ backgroundImage: `url(${file.thumbUrl})` }}
-          title={file.name}
-        />
-        {originNode}
-      </div>
-    );
-  };
   return (
-    <Board style={{ padding: "30px 90px" }}>
+    <Board className="infoBoard">
       <VerticalSpace direction="vertical" size="middle">
         <div>
           <Title level={5}>滿意度問卷Banner</Title>
@@ -54,7 +49,7 @@ const QuestionnaireInfo = ({ control }) => {
                 }}
                 onBlur={onBlur}
                 fileList={value}
-                itemRender={customRender}
+                itemRender={customItemRender}
                 showUploadList={{
                   removeIcon: <CloseOutlined style={{ fontSize: 12 }} />,
                 }}

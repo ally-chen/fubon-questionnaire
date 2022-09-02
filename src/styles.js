@@ -49,7 +49,7 @@ export const ButtonCategory = styled(Button)`
   position: relative;
   text-align: left;
   border: 1px dashed #23C4A8;
-  &:hover, &:active, &:focus {
+  &:hover, &:active, &:focus, &.active {
     background: #E6F7FF;
     color: #363636;
   }
@@ -96,6 +96,42 @@ export const ButtonSwitch = styled(Switch)`
     .ant-switch-inner {
       margin: 0 6px;
     }
+  }
+}
+`;
+
+export const IndexWithRequired = styled.div`
+  line-height: 1;
+  > .anticon {
+    position: absolute;
+    font-size: 10px;
+    color: #fff;
+    left: -10px;
+    top: 5px;
+  }
+`;
+
+export const InsertLine = styled.div`
+position: absolute;
+left: 0;
+bottom: -12px;
+width: 100%;
+height: 10px;
+border-bottom: 4px solid #4CAAF5;
+opacity: 0;
+cursor: pointer;
+&:hover {
+  opacity: 1;
+}
+.ant-avatar {
+  position: absolute;
+  left: 0px;
+  bottom: -18px;
+  font-size: 12px;
+  background: #4CAAF5;
+  + .ant-avatar {
+    left: 24px;
+    font-size: 18px;
   }
 }
 `;
